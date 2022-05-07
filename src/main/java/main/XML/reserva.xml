@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<rs:reserva xmlns:rs="http://www.unison.mx/reserva"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance"
+         xsd:schemaLocation="http://www.unison.mx/reserva
+                             reserva.xsd" version="1">
+
+    <rs:habitaciones>
+        <rs:habitacion numero="202">
+            <rs:desde>2009-11-22</rs:desde>
+            <rs:hasta>2009-11-24</rs:hasta>
+            <rs:residentes>
+                <rs:residente responsable="true">
+                    <rs:nombres>Pedro</rs:nombres>
+                    <rs:apellido>Camacho</rs:apellido>
+                    <rs:pasaporte>552321</rs:pasaporte>
+                    <rs:nacionalidad>PE</rs:nacionalidad>
+                </rs:residente>
+                <rs:residente>
+                    <rs:nombres>Julia</rs:nombres>
+                    <rs:apellido>Urquidi</rs:apellido>
+                    <rs:pasaporte>664423</rs:pasaporte>
+                    <rs:nacionalidad>BO</rs:nacionalidad>
+                </rs:residente>
+            </rs:residentes>
+        </rs:habitacion>
+    </rs:habitaciones>
+    <rs:mediopago>
+        <rs:tarjeta_credito>
+            <rs:tipo>AMEX</rs:tipo>
+            <rs:numero>38822050023042</rs:numero>
+        </rs:tarjeta_credito>
+    </rs:mediopago>
+</rs:reserva>

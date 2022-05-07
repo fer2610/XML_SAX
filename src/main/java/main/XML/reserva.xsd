@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:reserva="http://www.unison.mx/reserva"
+            targetNamespace="http://www.unison.mx/reserva"
+            elementFormDefault="qualified">
+
+    <xsd:complexType name="tipoHuesped">
+        <xsd:sequence>
+            <xsd:element name="nombres" type="xsd:string"/>
+            <xsd:element name="apellido" type="xsd:string"/>
+            <xsd:element name="pasaporte" type="xsd:string"/>
+            <xsd:element name="nacionalidad" type="xsd:string"/>
+        </xsd:sequence>
+        <xsd:attribute name="responsable" type="xsd:boolean" />
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoResidentes">
+        <xsd:sequence>
+           <xsd:element name="residente" type="reserva:tipoHuesped" maxOccurs="2" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoHabita">
+        <xsd:sequence>
+            <xsd:element name="desde" type="xsd:date"/>
+            <xsd:element name="hasta" type="xsd:date"/>
+            <xsd:element name="residentes" type="reserva:tipoResidentes"/>
+        </xsd:sequence>
+        <xsd:attribute name="numero" type="xsd:integer" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="tipoTarjeta">
+        <xsd:sequence>
+            <xsd:element name="tipo" type="xsd:string"/>
+            <xsd:element name="numero" type="xsd:decimal"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="reserva">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="habitaciones" >
+                    <xsd:complexType>
+                        <xsd:sequence >
+                            <xsd:element name="habitacion" type="reserva:tipoHabita"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="mediopago" >
+                        <xsd:complexType>
+                           <xsd:sequence>
+                              <xsd:element name="tarjeta_credito" type="reserva:tipoTarjeta"/>
+                           </xsd:sequence>
+                        </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="version" type="xsd:integer" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="reserva" type="reservaType"/>
+  <xs:complexType name="residenteType">
+    <xs:sequence>
+      <xs:element name="nombres">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Pedro"/>
+            <xs:enumeration value="Julia"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="apellido">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Camacho"/>
+            <xs:enumeration value="Urquidi"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pasaporte">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="552321"/>
+            <xs:enumeration value="664423"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="nacionalidad">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="PE"/>
+            <xs:enumeration value="BO"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="responsable" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="residentesType">
+    <xs:sequence>
+      <xs:element type="residenteType" name="residente" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="habitacionType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="desde"/>
+      <xs:element type="xs:string" name="hasta"/>
+      <xs:element type="residentesType" name="residentes"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="numero"/>
+  </xs:complexType>
+  <xs:complexType name="habitacionesType">
+    <xs:sequence>
+      <xs:element type="habitacionType" name="habitacion"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tarjeta_creditoType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="tipo"/>
+      <xs:element type="xs:string" name="numero"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="mediopagoType">
+    <xs:sequence>
+      <xs:element type="tarjeta_creditoType" name="tarjeta_credito"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reservaType">
+    <xs:sequence>
+      <xs:element type="habitacionesType" name="habitaciones"/>
+      <xs:element type="mediopagoType" name="mediopago"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="version"/>
+  </xs:complexType>
+</xs:schema>
